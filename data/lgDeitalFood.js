@@ -1,5 +1,5 @@
 const contentDetail = {
-	En: {
+	en: {
 		banner: {
 			category: 'Menu',
 			title: 'Our dishes',
@@ -132,7 +132,7 @@ const contentDetail = {
 		},
 		same: 'You Might Also Like',
 	},
-	Vn: {
+	vn: {
 		banner: {
 			category: 'Món ăn',
 			title: 'Món ăn của chúng tôi',
@@ -265,7 +265,7 @@ const contentDetail = {
 		},
 		same: 'Có thể bạn cũng thích',
 	},
-	Cn: {
+	cn: {
 		banner: {
 			category: '菜单',
 			title: '我们的菜',

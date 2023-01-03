@@ -1,5 +1,5 @@
 export const dataHeader = {
-	En: {
+	en: {
 		btn: 'Contact',
 		nav: [
 			{ title: 'Home', link: '' },
@@ -22,7 +22,7 @@ export const dataHeader = {
 			],
 		},
 	},
-	Vn: {
+	vn: {
 		btn: 'Liên hệ',
 		nav: [
 			{ title: 'Trang chủ', link: '' },
@@ -45,7 +45,7 @@ export const dataHeader = {
 			],
 		},
 	},
-	Cn: {
+	cn: {
 		btn: '关于我们',
 		nav: [
 			{ title: '家', link: '' },
@@ -68,18 +68,18 @@ export const dataHeader = {
 };
 
 export const dataHeaderOrder = {
-	En: {
+	en: {
 		title: 'Total',
 		description: 'Please copy order and message the page or telegram @bosongvn',
 		button: 'Copy order',
 	},
-	Vn: {
+	vn: {
 		title: 'Tổng',
 		description:
 			'Vui lòng sao chép đơn đặt hàng và nhắn tin cho trang hoặc telegram @bosongvn',
 		button: 'Sao chép đơn đặt hàng',
 	},
-	Cn: {
+	cn: {
 		title: '全部的',
 		description: '请复制订单并留言页面或电报@bosongvn',
 		button: '复制订单',
@@ -87,7 +87,7 @@ export const dataHeaderOrder = {
 };
 
 export const dataFooter = {
-	En: {
+	en: {
 		social: 'FOLLOW US',
 		input_title: 'Your Email Address',
 		info: {
@@ -97,7 +97,7 @@ export const dataFooter = {
 		},
 		copy_right: '@Copyright 2022 BOSONG, All right reserved',
 	},
-	Vn: {
+	vn: {
 		social: 'FOLLOW US',
 		input_title: 'Địa chỉ email của bạn',
 		info: {
@@ -107,7 +107,7 @@ export const dataFooter = {
 		},
 		copy_right: '@Copyright 2022 BOSONG, All right reserved',
 	},
-	Cn: {
+	cn: {
 		social: '跟着我们',
 		input_title: '您的电子邮件地址',
 		info: {

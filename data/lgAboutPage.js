@@ -1,5 +1,5 @@
 const content = {
-	En: {
+	en: {
 		banner: {
 			title: 'About Us',
 			nav: 'About Us',
@@ -46,7 +46,7 @@ const content = {
 			title: 'Image gallery',
 		},
 	},
-	Vn: {
+	vn: {
 		banner: {
 			title: 'Về chúng tôi',
 			nav: 'Về chúng tôi',
@@ -89,7 +89,7 @@ const content = {
 			title: 'Ảnh nhà hàng',
 		},
 	},
-	Cn: {
+	cn: {
 		banner: {
 			title: '关于我们',
 			nav: '关于我们',

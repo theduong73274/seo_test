@@ -1,15 +1,15 @@
 const checkLanguage = (language, contentData) => {
 	let contentPage;
 	switch (language) {
-		case 'Cn':
-			contentPage = contentData.Cn;
+		case 'cn':
+			contentPage = contentData.cn;
 			break;
-		case 'Vn':
-			contentPage = contentData.Vn;
+		case 'vn':
+			contentPage = contentData.vn;
 			break;
 
 		default:
-			contentPage = contentData.En;
+			contentPage = contentData.en;
 			break;
 	}
 
@@ -17,13 +17,13 @@ const checkLanguage = (language, contentData) => {
 };
 
 export function handleCheckLgAll(language) {
-	return language === 'Cn' ? '全部' : language === 'Vn' ? 'Tất cả' : 'All';
+	return language === 'cn' ? '全部' : language === 'vn' ? 'Tất cả' : 'All';
 }
 
 export function handleChangeLg(language, data, getItem) {
-	return language === 'Cn'
+	return language === 'cn'
 		? data[getItem + '_cn']
-		: language === 'Vn'
+		: language === 'vn'
 		? data[getItem + '_vi']
 		: data[getItem];
 }

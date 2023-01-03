@@ -1,5 +1,5 @@
 const content = {
-	En: {
+	en: {
 		banner: {
 			title: 'Menu',
 			nav: 'Menu',
@@ -7,7 +7,7 @@ const content = {
 		empty: 'No Products Found!',
 		search: 'Search dishes...',
 	},
-	Vn: {
+	vn: {
 		banner: {
 			title: 'Thực đơn',
 			nav: 'Thực đơn',
@@ -15,7 +15,7 @@ const content = {
 		empty: 'Không tìm thấy món ăn!',
 		search: 'Tìm kiếm món ăn...',
 	},
-	Cn: {
+	cn: {
 		banner: {
 			title: '菜单',
 			nav: '菜单',

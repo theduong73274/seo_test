@@ -12,15 +12,15 @@ import Link from 'next/link';
 const Footer = ({ language }) => {
 	let contentFooter;
 	switch (language) {
-		case 'Cn':
-			contentFooter = dataFooter.Cn;
+		case 'cn':
+			contentFooter = dataFooter.cn;
 			break;
-		case 'Vn':
-			contentFooter = dataFooter.Vn;
+		case 'vn':
+			contentFooter = dataFooter.vn;
 			break;
 
 		default:
-			contentFooter = dataFooter.En;
+			contentFooter = dataFooter.en;
 			break;
 	}
 	const { social, input_title, info, copy_right } = contentFooter;

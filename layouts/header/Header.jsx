@@ -8,29 +8,29 @@ import flagUs from '../../public/image/flagUs.png';
 import flagVn from '../../public/image/flagVn.png';
 import Button from '../../components/button/Button';
 import DropdownHook from '../../components/dropdown/DropdownHook';
-import { dataHeader } from '../../data/lgGeneral';
 import checkLanguage from '../../utils/checkLg';
 import HeaderMenu from './HeaderMenu';
 import { Router, useRouter } from 'next/router';
 import Image from 'next/image';
 import { NavLink, useLocation } from 'react-router-dom';
+import { dataHeader } from '../../data/lgGeneral';
 
 const LanguageData = [
 	{
 		id: 1,
-		value: 'En',
+		value: 'en',
 		text: 'English',
 		img: flagUs,
 	},
 	{
 		id: 2,
-		value: 'Vn',
+		value: 'vn',
 		text: 'VietNam',
 		img: flagVn,
 	},
 	{
 		id: 3,
-		value: 'Cn',
+		value: 'cn',
 		text: '中国',
 		img: flagCn,
 	},
@@ -245,6 +245,7 @@ function HeaderNav({ navLink }) {
 }
 
 function HeaderInteract({ language, handleSetLanguage, contentBtn }) {
+	const router = useRouter();
 	return (
 		<div className="flex items-center gap-12">
 			<div className="flex items-center gap-5">
@@ -256,7 +257,7 @@ function HeaderInteract({ language, handleSetLanguage, contentBtn }) {
 					></DropdownHook>
 				</div>
 
-				<button onClick={() => Router.push('/menu')}>
+				<button onClick={() => router.push('/menu')}>
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
 						fill="none"

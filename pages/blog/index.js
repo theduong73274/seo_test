@@ -18,20 +18,19 @@ import checkLanguage, {
 } from '../../utils/checkLg';
 import { blog } from '../../data/lgBlog';
 import moment from 'moment/moment';
+import Link from 'next/link';
 
 export default function AboutPage({ language }) {
 	const contentPage = checkLanguage(language, blog);
 	const { banner, list, search, notSearch } = contentPage;
 	const router = useRouter();
 	const { ca } = router.query;
-	console.log('🚀 ~ AboutPage ~ router', router.query);
+	// console.log('🚀 ~ AboutPage ~ router', router.query);
 
 	const [searchParams, setSearchParams] = useState(ca);
-	console.log('🚀 ~ AboutPage ~ searchParams', searchParams);
 	const categoryBlog = searchParams || 0;
 
 	const [categoryState, setCategoryState] = useState(categoryBlog);
-	console.log('🚀 ~ AboutPage ~ categoryState', categoryState);
 	const [pageCount, setPageCount] = useState(0);
 	const [itemOffset, setItemOffset] = useState(0);
 
@@ -40,7 +39,7 @@ export default function AboutPage({ language }) {
 	const [url, setUrl] = useState(
 		tmdbAPI.getBlogList('category-news', categoryState, nextPage)
 	);
-	console.log(tmdbAPI.getBlogList('category-news', categoryState, nextPage));
+	// console.log(tmdbAPI.getBlogList('category-news', categoryState, nextPage));
 	const filterDebounce = useDebounce(filter, 500);
 
 	// if (!tabCategory.some((item) => item.id === categoryBlog)) {
@@ -196,12 +195,14 @@ export default function AboutPage({ language }) {
 												)}
 											</p>
 										</div>
-										<Button
-											className="block mt-6 min-h-[48px]"
-											onClick={() => router.push(`/blog/${item.slug}`)}
-										>
-											{list.btn}
-										</Button>
+										<Link href={`/blog/${item.slug}`}>
+											<Button
+												className="block mt-6 min-h-[48px]"
+												// onClick={() => router.push(`/blog/${item.slug}`)}
+											>
+												{list.btn}
+											</Button>
+										</Link>
 									</div>
 								))
 							) : (

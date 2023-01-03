@@ -1,5 +1,5 @@
 const content = {
-	En: {
+	en: {
 		title: 'Bringing Our Vietnam To You',
 		sub_title: '100% healthy and natural food',
 		button_title: 'discover menu',
@@ -198,7 +198,7 @@ const content = {
 			btn: 'view our blog',
 		},
 	},
-	Vn: {
+	vn: {
 		title: 'Bringing Our Vietnam To You',
 		sub_title: '100% healthy and natural food',
 		button_title: 'Thực đơn',
@@ -397,7 +397,7 @@ const content = {
 				'Đọc tin tức về nhà hàng của chúng tôi, các công thức chế biến món ăn ngon và các mẹo cho căn bếp tại nhà của bạn trên blog của chúng tôi!',
 		},
 	},
-	Cn: {
+	cn: {
 		title: '把我们的越南带给你',
 		sub_title: '100% 健康天然食品',
 		button_title: '发现菜单',

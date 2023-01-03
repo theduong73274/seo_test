@@ -1,14 +1,16 @@
-import React, { useEffect } from 'react';
+import React, { createElement, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import PropTypes from 'prop-types';
 
 // function createPortalWrapper() {
-// 	const element = document.createElement('div');
-// 	element.id = 'portal-wrapper';
+// 	const element = React.createElement('div');
+// 	const newElement = React.cloneElement(element, { id: 'portal-wrapper' });
 
-// 	return element;
+// 	return newElement;
 // }
-// const portalWrapperElm = createPortalWrapper();
+const portalWrapperElm = process.browser
+	? document.getElementById('portal-wrapper')
+	: null;
 
 const Portal = ({
 	containerClassName = '',
@@ -20,11 +22,11 @@ const Portal = ({
 	children,
 }) => {
 	useEffect(() => {
-		const element = document.createElement('div');
-		element.id = 'portal-wrapper';
+		// const element = document.createElement('div');
+		// element.id = 'portal-wrapper';
 
 		// return element;
-		document.body.appendChild(element);
+		document.body.appendChild(portalWrapperElm);
 	}, []);
 
 	const renderContent = (

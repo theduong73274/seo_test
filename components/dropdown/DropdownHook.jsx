@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import useClickOutSide from '../../hooks/useClickOutSide';
 import { AiFillCaretDown } from 'react-icons/ai';
+import { useLanguage } from '../../contexts/language-context';
 
 const DropdownHook = ({ changeValue, data, isCheck = false, language }) => {
 	const checkDataLg = data.find((item) => item.value === language);

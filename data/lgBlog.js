@@ -1,5 +1,5 @@
 export const blog = {
-	En: {
+	en: {
 		banner: {
 			title: 'Blog',
 			nav: 'Blog',
@@ -14,7 +14,7 @@ export const blog = {
 		},
 		notSearch: 'Did not find the article!',
 	},
-	Vn: {
+	vn: {
 		banner: {
 			title: 'Bài viết',
 			nav: 'Bài viết',
@@ -27,7 +27,7 @@ export const blog = {
 		search: { text: 'Tìm kiếm bài viết...' },
 		notSearch: 'Không tìm thấy bài viết!',
 	},
-	Cn: {
+	cn: {
 		banner: {
 			title: '博客',
 			nav: '博客',
@@ -43,21 +43,21 @@ export const blog = {
 };
 
 export const blogDetail = {
-	En: {
+	en: {
 		banner: {
 			title: 'Blog',
 			nav: 'Blog',
 		},
 		same: { title: 'Related posts', sub: ' •  news' },
 	},
-	Vn: {
+	vn: {
 		banner: {
 			title: 'Bài viết',
 			nav: 'Bài viết',
 		},
 		same: { title: 'Bài viết liên quan', sub: ' •  tin tức' },
 	},
-	Cn: {
+	cn: {
 		banner: {
 			title: '博客',
 			nav: '博客',

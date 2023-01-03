@@ -1,11 +1,12 @@
+import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import React, { useEffect } from 'react';
 import { useController, useForm } from 'react-hook-form';
 import { toast, ToastContainer } from 'react-toastify';
-import * as yup from 'yup';
 import 'yup-phone';
-import { axiosPost } from '../../apiConfig/config';
+// import { axiosPost } from '../../apiConfig/config';
 import Button from '../../components/button/Button';
+import { axiosPost } from '../../pages/api/config';
 
 const phoneRegExp =
 	/^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;

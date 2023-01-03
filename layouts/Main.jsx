@@ -1,8 +1,12 @@
-import React, { Children, Fragment } from 'react';
+import React, { Fragment, useContext } from 'react';
+import LanguageContext from '../contexts/language-context';
 import Footer from './footer/Footer';
+
 import Header from './header/Header';
 
-const Main = ({ language, handleSetLanguage, children }) => {
+const Main = ({ handleSetLanguage, children }) => {
+	const { language, setLanguage } = useContext(LanguageContext);
+
 	return (
 		<Fragment>
 			<Header

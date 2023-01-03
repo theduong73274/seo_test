@@ -1,5 +1,5 @@
 export const contact = {
-	En: {
+	en: {
 		banner: {
 			title: 'Contact',
 			nav: 'Contact',
@@ -19,7 +19,7 @@ export const contact = {
 			button: 'submit message',
 		},
 	},
-	Vn: {
+	vn: {
 		banner: {
 			title: 'Liên hệ',
 			nav: 'Liên hệ',
@@ -39,7 +39,7 @@ export const contact = {
 			button: 'Gửi tin nhắn',
 		},
 	},
-	Cn: {
+	cn: {
 		banner: {
 			title: '接触',
 			nav: '接触',
