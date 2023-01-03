@@ -29,9 +29,11 @@
     "react-router-dom": "^6.6.1",
     "react-share": "^4.4.1",
     "react-transition-group": "^4.4.5",
+    "sanitize-html": "^2.8.1",
     "sass": "^1.57.1",
     "swiper": "^8.4.5",
     "swr": "^2.0.0",
+    "use-query-params": "^2.1.2",
     "uuid": "^9.0.0"
   },
   "devDependencies": {

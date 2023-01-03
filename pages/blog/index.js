@@ -1,27 +1,37 @@
 import Head from 'next/head';
 import useSWR from 'swr';
-import Banner from '../layouts/banner/Banner';
-import { fetcher, tmdbAPI } from './api/config';
-
+import { fetcher, tmdbAPI } from '../api/config';
 import { useRouter } from 'next/router';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import ReactPaginate from 'react-paginate';
-import { useSearchParams } from 'react-router-dom';
+// import { useSearchParams } from 'use-query-params';
+// import { useSearchParams } from 'react-router-dom';
+import { useSearchParams } from 'next/router';
 import Button from '../../components/button/Button';
 import LoadingSkeleton from '../../components/loading/LoadingSkeleton';
 import useDebounce from '../../hooks/useDebounce';
 import { changePathWebp } from '../../utils';
-import checkLanguage, { handleChangeLg } from '../utils/checkLg';
+import Banner from '../../layouts/banner/Banner';
+import checkLanguage, {
+	handleChangeLg,
+	handleCheckLgAll,
+} from '../../utils/checkLg';
+import { blog } from '../../data/lgBlog';
+import moment from 'moment/moment';
 
 export default function AboutPage({ language }) {
 	const contentPage = checkLanguage(language, blog);
 	const { banner, list, search, notSearch } = contentPage;
 	const router = useRouter();
+	const { ca } = router.query;
+	console.log('🚀 ~ AboutPage ~ router', router.query);
 
-	let [searchParams, setSearchParams] = useSearchParams();
-	const categoryBlog = searchParams.get('ca') || 0;
+	const [searchParams, setSearchParams] = useState(ca);
+	console.log('🚀 ~ AboutPage ~ searchParams', searchParams);
+	const categoryBlog = searchParams || 0;
 
 	const [categoryState, setCategoryState] = useState(categoryBlog);
+	console.log('🚀 ~ AboutPage ~ categoryState', categoryState);
 	const [pageCount, setPageCount] = useState(0);
 	const [itemOffset, setItemOffset] = useState(0);
 
@@ -30,7 +40,7 @@ export default function AboutPage({ language }) {
 	const [url, setUrl] = useState(
 		tmdbAPI.getBlogList('category-news', categoryState, nextPage)
 	);
-	// console.log(tmdbAPI.getBlogList('category-news', categoryState, nextPage));
+	console.log(tmdbAPI.getBlogList('category-news', categoryState, nextPage));
 	const filterDebounce = useDebounce(filter, 500);
 
 	// if (!tabCategory.some((item) => item.id === categoryBlog)) {
@@ -51,7 +61,20 @@ export default function AboutPage({ language }) {
 		setNextPage(event.selected + 1);
 	};
 
+	const handleSetSearch = (event) => {
+		console.log('🚀 ~ handleSetSearch ~ e', event);
+		router.replace({
+			pathname: router.pathname,
+			query: { ca: event },
+		});
+		setSearchParams(event);
+	};
+
 	const blogList = data?.news?.data || [];
+
+	useEffect(() => {
+		setSearchParams(ca);
+	}, [ca]);
 
 	useEffect(() => {
 		if (!data || !data.news.total) return;
@@ -89,6 +112,7 @@ export default function AboutPage({ language }) {
 							<h2 className="font-dancing text-[68px] fl:text-6xl mat:text-center mb:text-[54px]">
 								{list.title}
 							</h2>
+
 							<div className="font-lora mt-6 min-w-[350px] relative mat:col-span-2 mat:max-w-[60%] mat:mx-auto mat:row-span-1 mb:min-w-full">
 								<input
 									type="text"
@@ -127,7 +151,7 @@ export default function AboutPage({ language }) {
 							language={language}
 							toggleState={Number.parseInt(categoryState)}
 							handleSetToggle={setCategoryState}
-							handleSearchParams={setSearchParams}
+							handleSearchParams={handleSetSearch}
 						></CategoryTab>
 
 						<div className="grid grid-cols-3 mt-14 gap-x-10 gap-y-12 mat:grid-cols-2 mb:grid-cols-1 mat:gap-y-16">
@@ -219,7 +243,7 @@ const CategoryTab = ({
 
 	const toggleTab = (index) => {
 		handleSetToggle(index);
-		index === 0 ? handleSearchParams('') : handleSearchParams(`ca=${index}`);
+		index === 0 ? handleSearchParams('') : handleSearchParams(index);
 	};
 
 	return (
