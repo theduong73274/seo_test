@@ -1,14 +1,20 @@
-import { Html, Head, Main, NextScript } from 'next/document';
+import Document, { Html, Main, NextScript, Head } from 'next/document';
 
-export default function Document() {
+function MyDocument({ locale }) {
 	return (
-		<Html lang="en">
+		<Html dir={locale === 'ar' ? 'rtl' : 'ltr'} lang={locale}>
 			<Head />
 			<body>
 				<Main />
 				<NextScript />
-				<div id="portal-wrapper"></div>
 			</body>
 		</Html>
 	);
 }
+
+MyDocument.getInitialProps = async (ctx) => {
+	const initialProps = await Document.getInitialProps(ctx);
+	return { ...initialProps, locale: ctx?.locale || 'en' };
+};
+
+export default MyDocument;

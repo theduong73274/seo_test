@@ -1,15 +1,21 @@
+import { useTranslation } from 'next-i18next';
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
+import { useEffect } from 'react';
 import useSWR from 'swr';
 import Button from '../components/button/Button';
+import Navigation from '../components/navigation';
 import content from '../data/lgHomePage';
+import useTrans from '../hooks/useTrans';
 import Feedback from '../layouts/feedback/Feedback';
 import DishMenu from '../layouts/home/DishMenu';
 import DishNews from '../layouts/home/DishNews';
 import HomeContact from '../layouts/home/HomeContact';
 import Intro from '../layouts/intro/Intro';
 import TitleHeader from '../layouts/title/TitleHeader';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 import bird1 from '../public/image/bird-left.png';
 import bird2 from '../public/image/bird-right.png';
@@ -18,6 +24,10 @@ import checkLanguage, { handleChangeLg } from '../utils/checkLg';
 import { fetcher, tmdbAPI } from './api/config';
 
 export default function Home({ language }) {
+	const { t } = useTranslation();
+	console.log('🚀 ~ Home ~ t', t);
+	console.log('🚀 ~ Home ~ t', t('home'));
+
 	const { v4: uuidv4 } = require('uuid');
 	const { data } = useSWR(tmdbAPI.getCategory('settings'), fetcher);
 	if (!data) return null;
@@ -40,6 +50,12 @@ export default function Home({ language }) {
 				<meta name="description" content={data.web_description} />
 				<meta name="viewport" content="width=device-width, initial-scale=1" />
 			</Head>
+
+			<Navigation />
+			<div className="mt-5">
+				<h1>{t('home.title')}</h1>
+				<p>{t('home.Home description')}</p>
+			</div>
 
 			<section className="py-[180px] back-title mb-[200px] mat:py-32 fl:mb-40 mat:mb-[60px] mb:mb-4 mb:pb-20">
 				<div className="relative page-container">
@@ -232,4 +248,12 @@ export default function Home({ language }) {
 			</section>
 		</>
 	);
+}
+
+export async function getStaticProps({ locale }) {
+	return {
+		props: {
+			...(await serverSideTranslations(locale, ['common'])),
+		},
+	};
 }

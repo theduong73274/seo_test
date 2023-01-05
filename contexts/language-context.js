@@ -3,6 +3,10 @@ import detectBrowserLanguage from 'detect-browser-language';
 
 const LanguageContext = createContext();
 
+export function storeLanguageInLocalStorage(language) {
+	localStorage.setItem('language', language);
+}
+
 export const LanguageProvider = ({ children }) => {
 	const languageDefault = process.browser ? detectBrowserLanguage() : null;
 	console.log('🚀 ~ LanguageProvider ~ languageDefault', languageDefault);
