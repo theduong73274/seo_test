@@ -11,6 +11,7 @@ import { FacebookShareButton, TelegramShareButton } from 'react-share';
 import Link from 'next/link';
 import DetailDesc from '../../layouts/detailPage/DetailDesc';
 import DishesList from '../../components/product/DishesList';
+// import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 // Get All Paths FOR NextJS
 export const getStaticPaths = async () => {
@@ -20,9 +21,11 @@ export const getStaticPaths = async () => {
 	// Map data to an array of path objects with params(id);
 	const paths = data?.data.map((coder) => {
 		return {
+			// locale: locales.data,
 			params: { slug: coder.slug.toString() },
 		};
 	});
+	console.log('🚀 ~ paths ~ paths', paths);
 
 	return {
 		paths,
@@ -32,14 +35,19 @@ export const getStaticPaths = async () => {
 
 // Get id
 export const getStaticProps = async (context) => {
+	console.log('🚀 ~ getStaticProps ~ context', context);
 	const slugs = context.params.slug;
 	const res = await fetch(
 		'https://admin.bosong.restaurant/api/public/product/' + slugs
 	);
 	const data = await res.json();
+	console.log('🚀 ~ getStaticProps ~ data', data);
 
 	return {
-		props: { data: data },
+		props: {
+			data: data,
+			// ...(await serverSideTranslations(locale, ['common'])),
+		},
 	};
 };
 

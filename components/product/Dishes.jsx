@@ -8,8 +8,13 @@ import { useDispatch } from 'react-redux';
 import { changePath200 } from '../../utils';
 import { handleChangeLg } from '../../utils/checkLg';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 const Dishes = ({ data, language }) => {
+	const router = useRouter();
+	console.log(router);
+	const { locale: activeLocale } = router;
+
 	const dispatch = useDispatch();
 	const { price, slug, feature_image_path, discount } = data;
 	const [isActive, setIsActive] = useState(false);
@@ -58,7 +63,8 @@ const Dishes = ({ data, language }) => {
 					className="flex ml-auto text-xl mat:absolute mat:right-6 mat:bottom-4"
 					onClick={handleBtnSeeMore}
 				>
-					<Link href={`/menu/${slug}`}>
+					{/* <Link href={`/${activeLocale}/menu/${slug}`}> */}
+					<Link href={'/[lang]/slug'} as={`/${activeLocale}/menu/${slug}`}>
 						{language === 'Cn'
 							? '看更多'
 							: language === 'Vn'

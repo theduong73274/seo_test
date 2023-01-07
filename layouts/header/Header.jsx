@@ -36,7 +36,7 @@ const LanguageData = [
 	},
 ];
 
-const Header = ({ language, handleSetLanguage }) => {
+const Header = ({ language }) => {
 	const contentHeader = checkLanguage(language, dataHeader);
 	const { btn, nav, nav_mobile } = contentHeader;
 
@@ -209,7 +209,6 @@ const Header = ({ language, handleSetLanguage }) => {
 							<HeaderNav navLink={nav}></HeaderNav>
 							<HeaderInteract
 								language={language}
-								handleSetLanguage={handleSetLanguage}
 								contentBtn={btn}
 							></HeaderInteract>
 						</>
@@ -244,17 +243,13 @@ function HeaderNav({ navLink }) {
 	);
 }
 
-function HeaderInteract({ language, handleSetLanguage, contentBtn }) {
+function HeaderInteract({ language, contentBtn }) {
 	const router = useRouter();
 	return (
 		<div className="flex items-center gap-12">
 			<div className="flex items-center gap-5">
 				<div className="language-select">
-					<DropdownHook
-						language={language}
-						data={LanguageData}
-						changeValue={handleSetLanguage}
-					></DropdownHook>
+					<DropdownHook language={language} data={LanguageData}></DropdownHook>
 				</div>
 
 				<button onClick={() => router.push('/menu')}>

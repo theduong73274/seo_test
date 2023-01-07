@@ -1,5 +1,5 @@
 import moment from 'moment';
-import { Router } from 'next/router';
+import { Router, useRouter } from 'next/router';
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import useSWR from 'swr';
@@ -8,6 +8,7 @@ import { changePath200, changePathWebp } from '../../utils';
 import { handleChangeLg } from '../../utils/checkLg';
 
 const DishNews = ({ language, sub }) => {
+	const router = useRouter();
 	// const navigate = useNavigate();
 	const { data } = useSWR(tmdbAPI.getBlogList('category-news', 0), fetcher);
 	if (!data) return null;
@@ -23,7 +24,7 @@ const DishNews = ({ language, sub }) => {
 					<div
 						className="relative cursor-pointer shadow-intro group"
 						key={item.id}
-						onClick={() => Router.push(`/blog/${item.id}`)}
+						onClick={() => router.push(`/blog/${item.id}`)}
 					>
 						<div className="h-[500px] fl:h-[420px] mat:h-[404px]">
 							<img
@@ -55,7 +56,7 @@ const DishNews = ({ language, sub }) => {
 						<div
 							className="flex items-start cursor-pointer space-x-7 fl:space-x-4"
 							key={item.id}
-							onClick={() => navigate(`/blog/${item.id}`)}
+							onClick={() => router.push(`/blog/${item.id}`)}
 						>
 							<div className="h-[120px] w-[150px] min-w-[150px]">
 								<img

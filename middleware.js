@@ -6,8 +6,10 @@ export function middleware(request) {
 	const shouldHandleLocale =
 		!PUBLIC_FILE.test(request.nextUrl.pathname) &&
 		!request.nextUrl.pathname.includes('/api/') &&
-		!request.nextUrl.pathname.includes('/ar') &&
+		// !request.nextUrl.pathname.includes('/ar') &&
 		!request.nextUrl.pathname.includes('/en') &&
+		!request.nextUrl.pathname.includes('/vn') &&
+		!request.nextUrl.pathname.includes('/cn') &&
 		request.nextUrl.locale === 'default';
 
 	if (shouldHandleLocale) {

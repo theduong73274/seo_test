@@ -25,8 +25,6 @@ import { fetcher, tmdbAPI } from './api/config';
 
 export default function Home({ language }) {
 	const { t } = useTranslation();
-	console.log('🚀 ~ Home ~ t', t);
-	console.log('🚀 ~ Home ~ t', t('home'));
 
 	const { v4: uuidv4 } = require('uuid');
 	const { data } = useSWR(tmdbAPI.getCategory('settings'), fetcher);
@@ -51,12 +49,6 @@ export default function Home({ language }) {
 				<meta name="viewport" content="width=device-width, initial-scale=1" />
 			</Head>
 
-			<Navigation />
-			<div className="mt-5">
-				<h1>{t('home.title')}</h1>
-				<p>{t('home.Home description')}</p>
-			</div>
-
 			<section className="py-[180px] back-title mb-[200px] mat:py-32 fl:mb-40 mat:mb-[60px] mb:mb-4 mb:pb-20">
 				<div className="relative page-container">
 					<div className="max-w-[52%] mx-auto fl:max-w-[64%] mat:max-w-[90%]">
@@ -72,9 +64,11 @@ export default function Home({ language }) {
 									alt="bird.jpg"
 									className="hd:max-w-[86px] mat:max-w-[60px]"
 								/>
+
 								<p className="text-[22px] text-primary text-center font-lora mb:text-lg">
 									{handleChangeLg(language, data.home, 'home_sub_title')}
 								</p>
+
 								<img
 									src={bird2.src}
 									alt="bird.jpg"
@@ -223,7 +217,7 @@ export default function Home({ language }) {
 
 			<section className="flex items-center bg-[#222226] relative mat:flex-col">
 				<div className="w-2/4 mat:w-full">
-					<Image src={map} alt="" className="object-cover w-full" />
+					<img src={map.src} alt="" className="object-cover w-full" />
 				</div>
 
 				<div className="w-2/4 pl-[6%] map-contact mat:w-full mat:pl-0 mat:my-12">

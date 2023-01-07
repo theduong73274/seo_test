@@ -1,14 +1,14 @@
 {
-  "home": {
-    "Home title": "Home title",
-    "Home description": "Home description"
-  },
-  "about": {
-    "About title": "About title",
-    "About description": "About description"
-  },
-  "header": {
-    "Home": "Home",
-    "About": "About"
-  }
+	"home": {
+		"title": "Home title default",
+		"description": "Home description default"
+	},
+	"about": {
+		"About title": "About title",
+		"About description": "About description"
+	},
+	"header": {
+		"Home": "Home",
+		"About": "About"
+	}
 }

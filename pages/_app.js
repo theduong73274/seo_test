@@ -1,8 +1,8 @@
-import { Suspense, useState } from 'react';
+import { appWithTranslation } from 'next-i18next';
+import { Suspense } from 'react';
 import { Provider } from 'react-redux';
 import Main from '../layouts/Main';
 import store from '../redux';
-import { appWithTranslation } from 'next-i18next';
 
 import Head from 'next/head';
 import 'react-toastify/dist/ReactToastify.css';
@@ -15,13 +15,8 @@ import 'swiper/css/thumbs';
 import '../styles/globals.scss';
 
 // import '../i18n';
-import i18n from 'i18next';
-import { I18nextProvider } from 'react-i18next';
-import { IntlProvider } from 'react-intl';
-import { LanguageProvider } from '../contexts/language-context';
-import icon from '../public/icon.svg';
 import { useRouter } from 'next/router';
-import Cookies from 'js-cookie';
+import icon from '../public/icon.svg';
 
 // const languages = {
 // 	vi: require('../public/lang/vi/home.json'),
@@ -29,9 +24,13 @@ import Cookies from 'js-cookie';
 // };
 
 function App({ Component, pageProps }) {
+	const router = useRouter();
+	const { locale: activeLocale } = router;
+	const language = activeLocale || 'en';
+	console.log('🚀 ~ activeLocale', activeLocale);
 	// const [language, setLanguage] = useState('en');
 
-	const language = Cookies.get('i18next') || 'en';
+	// const language = Cookies.get('i18next') || 'en';
 	// console.log(Cookies.get('language'))
 	// const router = useRouter();
 	// const { locale, defaultLocale } = router;

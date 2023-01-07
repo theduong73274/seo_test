@@ -22,6 +22,7 @@ export default function Navigation() {
 				<Link href="/">
 					<span className="navbar-brand">Next.js Multi-Language</span>
 				</Link>
+
 				<div className="navbar-collapse" id="navbarText">
 					<ul className="mb-2 navbar-nav me-auto mb-lg-0">
 						<li className="nav-item">
@@ -35,6 +36,7 @@ export default function Navigation() {
 								</span>
 							</Link>
 						</li>
+
 						<li className="nav-item">
 							<Link href="/about">
 								<span
@@ -47,6 +49,7 @@ export default function Navigation() {
 							</Link>
 						</li>
 					</ul>
+
 					<LocaleSwitcher />
 				</div>
 			</div>
