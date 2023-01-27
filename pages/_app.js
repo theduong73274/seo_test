@@ -14,6 +14,7 @@ import 'swiper/css/pagination';
 import 'swiper/css/thumbs';
 import '../styles/globals.scss';
 
+import nextI18NextConfig from '../next-i18next.config.js';
 // import '../i18n';
 import { useRouter } from 'next/router';
 import icon from '../public/icon.svg';
@@ -56,7 +57,7 @@ function App({ Component, pageProps }) {
 	);
 }
 
-export default appWithTranslation(App);
+export default appWithTranslation(App, nextI18NextConfig);
 
 // App.getInitialProps = async ({ Component, ctx }) => {
 // 	let pageProps = {};

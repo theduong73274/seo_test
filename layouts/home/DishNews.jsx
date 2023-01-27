@@ -16,6 +16,7 @@ const DishNews = ({ language, sub }) => {
 
 	const blogMain = listBlog.slice(0, 2);
 	const blogSub = listBlog.slice(2, 5);
+	console.log('🚀 ~ DishNews ~ blogSub', blogSub);
 
 	return (
 		<div className="grid grid-cols-3 mt-16 fl:mt-12 gap-7 mat:mt-14 mb:mt-9 mat:grid-cols-2 mb:grid-cols-1 mat:gap-y-9">
@@ -24,7 +25,7 @@ const DishNews = ({ language, sub }) => {
 					<div
 						className="relative cursor-pointer shadow-intro group"
 						key={item.id}
-						onClick={() => router.push(`/blog/${item.id}`)}
+						onClick={() => router.push(`/blog/${item.slug}`)}
 					>
 						<div className="h-[500px] fl:h-[420px] mat:h-[404px]">
 							<img
@@ -56,7 +57,7 @@ const DishNews = ({ language, sub }) => {
 						<div
 							className="flex items-start cursor-pointer space-x-7 fl:space-x-4"
 							key={item.id}
-							onClick={() => router.push(`/blog/${item.id}`)}
+							onClick={() => router.push(`/blog/${item.slug}`)}
 						>
 							<div className="h-[120px] w-[150px] min-w-[150px]">
 								<img
