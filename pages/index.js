@@ -52,7 +52,7 @@ export default function Home({ language }) {
 			<section className="py-[180px] back-title mb-[200px] mat:py-32 fl:mb-40 mat:mb-[60px] mb:mb-4 mb:pb-20">
 				<div className="relative page-container">
 					<div className="max-w-[52%] mx-auto fl:max-w-[64%] mat:max-w-[90%]">
-						<h1 className="font-semibold text-[80px] font-dancing text-center leading-[1.15] mb:text-[50px]">
+						<h1 className="font-semibold text-[80px] mat:text-[69px] font-dancing text-center leading-[1.15] mb:text-[50px]">
 							{handleChangeLg(language, data.home, 'home_title')}
 						</h1>
 

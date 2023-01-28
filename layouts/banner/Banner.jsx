@@ -21,9 +21,9 @@ const Banner = ({ children, title = '', detail = '', language }) => {
 									href="/"
 									className="inline-flex items-center hover:text-primary hover:underline hover:underline-offset-4 font-pro text-xl fl:text-lg font-medium text-[#fff] mb:text-base"
 								>
-									{language === 'Cn'
+									{language === 'cn'
 										? '家'
-										: language === 'Vn'
+										: language === 'vn'
 										? 'Trang chủ'
 										: 'Home'}
 								</Link>

@@ -16,7 +16,6 @@ const DishNews = ({ language, sub }) => {
 
 	const blogMain = listBlog.slice(0, 2);
 	const blogSub = listBlog.slice(2, 5);
-	console.log('🚀 ~ DishNews ~ blogSub', blogSub);
 
 	return (
 		<div className="grid grid-cols-3 mt-16 fl:mt-12 gap-7 mat:mt-14 mb:mt-9 mat:grid-cols-2 mb:grid-cols-1 mat:gap-y-9">

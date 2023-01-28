@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import useSWR from 'swr';
 import { fetcher, tmdbAPI } from '../api/config';
-import { useRouter } from 'next/router';
+import { Router, useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import ReactPaginate from 'react-paginate';
 // import { useSearchParams } from 'use-query-params';
@@ -146,12 +146,19 @@ export default function AboutPage({ language }) {
 							</div>
 						</div>
 
-						<CategoryTab
+						{/* <CategoryTab
 							language={language}
 							toggleState={Number.parseInt(categoryState)}
 							handleSetToggle={setCategoryState}
 							handleSearchParams={handleSetSearch}
-						></CategoryTab>
+						></CategoryTab> */}
+
+						<Tabs
+							language={language}
+							toggleState={Number.parseInt(categoryState)}
+							handleSetToggle={setCategoryState}
+							handleSearchParams={handleSetSearch}
+						></Tabs>
 
 						<div className="grid grid-cols-3 mt-14 gap-x-10 gap-y-12 mat:grid-cols-2 mb:grid-cols-1 mat:gap-y-16">
 							{isLoading && (
@@ -248,7 +255,7 @@ const CategoryTab = ({
 	};
 
 	return (
-		<div className="flex items-center justify-center mt-6 text-lg fl:mt-6 font-pro header gap-x-14 mat:space-x-10 mat:gap-x-0 mat:pb-3 mat:mt-8 mb:overflow-x-auto mb:mx-1 mb:justify-start">
+		<div className="flex items-center justify-center mt-6 text-lg transition-all fl:mt-6 font-pro header gap-x-14 mat:space-x-10 mat:gap-x-0 mat:pb-3 mat:mt-8 mb:overflow-x-auto mb:mx-1 mb:justify-start">
 			<button
 				className={`pb-[2px] transition-all border-b-[1.4px] uppercase flex-shrink-0 mb:text-base ${
 					toggleState === 0
@@ -266,6 +273,57 @@ const CategoryTab = ({
 						key={item.id}
 						className={`pb-[2px] transition-all border-b-[1.4px] uppercase flex-shrink-0 mb:text-base ${
 							toggleState === item.id
+								? 'border-primary text-primary'
+								: 'border-transparent'
+						}`}
+						onClick={() => toggleTab(item.id)}
+					>
+						{handleChangeLg(language, item, 'title')}
+					</button>
+				))}
+		</div>
+	);
+};
+
+const Tabs = ({
+	language,
+	handleSetToggle,
+	handleSearchParams,
+	toggleState,
+}) => {
+	const router = useRouter();
+
+	const { data } = useSWR(tmdbAPI.getCategory('category-news'), fetcher);
+
+	if (!data) return null;
+	const tabCategory = data?.data || [];
+	console.log('🚀 ~ tabCategory', tabCategory);
+
+	const toggleTab = (index) => {
+		handleSetToggle(index);
+		index === 0 ? handleSearchParams('') : handleSearchParams(index);
+		router.push(`/blog?ca=${index}`);
+	};
+
+	return (
+		<div className="flex items-center justify-center mt-6 text-lg fl:mt-6 font-pro header gap-x-14 mat:space-x-10 mat:gap-x-0 mat:pb-3 mat:mt-8 mb:overflow-x-auto mb:mx-1 mb:justify-start">
+			<button
+				className={`pb-[2px] transition-all border-b-[1.4px] uppercase flex-shrink-0 mb:text-base ${
+					Number.parseInt(router.query.ca) === ('' || 0)
+						? 'border-primary text-primary'
+						: 'border-transparent'
+				}`}
+				onClick={() => toggleTab(0)}
+			>
+				{handleCheckLgAll(language)}
+			</button>
+
+			{tabCategory.length > 0 &&
+				tabCategory.map((item, index) => (
+					<button
+						key={item.id}
+						className={`pb-[2px] transition-all border-b-[1.4px] uppercase flex-shrink-0 mb:text-base ${
+							Number.parseInt(router.query.ca) === Number.parseInt(item.id)
 								? 'border-primary text-primary'
 								: 'border-transparent'
 						}`}

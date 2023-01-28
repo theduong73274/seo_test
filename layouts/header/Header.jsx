@@ -159,7 +159,7 @@ const Header = ({ language }) => {
 									language={language}
 									isCheck={isMobile}
 									data={LanguageData}
-									changeValue={handleSetLanguage}
+									// changeValue={handleSetLanguage}
 								></DropdownHook>
 							</div>
 
@@ -188,7 +188,7 @@ const Header = ({ language }) => {
 									className="absolute flex z-10 flex-col py-5 rounded-lg bg-[#222226] right-0 min-w-[150px] top-full mt-2 header font-pro gap-y-2 border-[#5e5e5e] border shadow-intro"
 									onClick={handleMenu}
 								>
-									{/* {nav_mobile.length > 0 &&
+									{nav_mobile.length > 0 &&
 										nav_mobile.map((item) => (
 											<Link
 												key={uuidv4()}
@@ -200,7 +200,7 @@ const Header = ({ language }) => {
 											>
 												{item.title}
 											</Link>
-										))} */}
+										))}
 								</div>
 							)}
 						</div>

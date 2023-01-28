@@ -1,7 +1,6 @@
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 export default function Coder({ data }) {
-	console.log('🚀 ~ Coder ~ data', data);
 	return (
 		<>
 			<h1>Bry</h1>

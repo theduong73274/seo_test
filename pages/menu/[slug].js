@@ -12,8 +12,11 @@ import Link from 'next/link';
 import DetailDesc from '../../layouts/detailPage/DetailDesc';
 import DishesList from '../../components/product/DishesList';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import { tmdbAPI } from '../api/config';
+import { useRouter } from 'next/router';
 
 export default function MenuDetail({ data, language }) {
+	const router = useRouter();
 	const { v4: uuidv4 } = require('uuid');
 
 	const contentPage = checkLanguage(language, contentDetail);
@@ -41,8 +44,14 @@ export default function MenuDetail({ data, language }) {
 	return (
 		<>
 			<Head>
-				<title>Coder | Detail</title>
-				<meta name="keywords" contents="coders" />
+				<title>Bờ sông quán | Detail</title>
+				<link rel="canonical" href={`${router.asPath}`} />
+				<meta name="description" content="Menu Bờ sông quán" />
+				<meta
+					property="og:image"
+					content={`${tmdbAPI.imageProduct(listImage[0].image_path)}`}
+				/>
+				<meta name="viewport" content="width=device-width, initial-scale=1" />
 			</Head>
 
 			<section className="banner relative min-h-[450px] fl:min-h-[250px] mb-[120px] mb:mb-14 fl:mb-24">
@@ -280,6 +289,7 @@ export const getStaticPaths = async () => {
 			params: { slug: coder.slug.toString() },
 			locale: 'cn',
 			locale: 'en',
+			locale: '',
 			locale: 'vn',
 		};
 	});

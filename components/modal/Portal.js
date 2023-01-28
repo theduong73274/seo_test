@@ -1,6 +1,14 @@
 import React, { createElement, useEffect } from 'react';
-import { createPortal } from 'react-dom';
 import PropTypes from 'prop-types';
+import { createPortal } from 'react-dom';
+
+function createPortalWrapper() {
+	const element = process.browser ? document.createElement('div') : null;
+	element ? (element.id = 'portal-wrapper') : '';
+
+	return element;
+}
+const portalWrapperElm = createPortalWrapper();
 
 // function createPortalWrapper() {
 // 	const element = React.createElement('div');
@@ -8,9 +16,9 @@ import PropTypes from 'prop-types';
 
 // 	return newElement;
 // }
-const portalWrapperElm = process.browser
-	? document.getElementById('portal-wrapper')
-	: null;
+// const portalWrapperElm = process.browser
+// 	? document.getElementById('portal-wrapper')
+// 	: null;
 
 const Portal = ({
 	containerClassName = '',

@@ -28,7 +28,6 @@ function App({ Component, pageProps }) {
 	const router = useRouter();
 	const { locale: activeLocale } = router;
 	const language = activeLocale || 'en';
-	console.log('🚀 ~ activeLocale', activeLocale);
 	// const [language, setLanguage] = useState('en');
 
 	// const language = Cookies.get('i18next') || 'en';

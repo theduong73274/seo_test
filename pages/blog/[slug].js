@@ -241,6 +241,7 @@ export const getStaticPaths = async () => {
 		return {
 			params: { slug: coder.slug.toString() },
 			locale: 'cn',
+			locale: '',
 			locale: 'en',
 			locale: 'vn',
 		};
